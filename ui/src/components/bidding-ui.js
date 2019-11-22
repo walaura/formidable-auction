@@ -8,7 +8,7 @@ import Prices, { Price } from "./bidding/price";
 
 const layoutStyles = css`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr minmax(0, 100vh);
 	background: ${tokens.dark};
 	color: #fff;
 	height: 100vh;
@@ -44,8 +44,6 @@ const getPrices = (basePrice, ftcRate) =>
 		};
 	});
 
-const basePrice = 15;
-
 const useFtcRate = () => {
 	const [rate, setRate] = useState(Math.random());
 	useEffect(() => {
@@ -60,13 +58,13 @@ const useFtcRate = () => {
 	return rate;
 };
 
-const BiddingUI = ({ price = undefined }) => {
+const BiddingUI = ({ price = undefined, lot = undefined }) => {
 	const ftcRate = useFtcRate();
 	const prices = getPrices(price || 0, ftcRate);
 	return (
 		<main css={layoutStyles}>
 			<div css={leftyLayoutStyles({ hasPrices: !!price })}>
-				<Plaque lorge={!price} item="Very long title to see how this overflows" lot={12} />
+				<Plaque isLarge={!price} item="Very long title to see how this overflows" lot={12} />
 				<div
 					css={css`
 						padding: ${tokens.padding};
