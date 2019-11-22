@@ -3,19 +3,19 @@ import React from "react";
 import tokens from "../../tokens";
 
 const styles = ({ isLarge, isTransparent }) => css`
-	background: ${isTransparent ? "transparent" : tokens.brand};
+	background: ${isTransparent ? tokens.dark : tokens.brand};
 	color: #fff;
 	padding: ${tokens.padding};
 	border-radius: 2px;
+	transition: 0.5s;
 	span {
-		font-size: 0.5em;
 		margin-bottom: 1em;
 		display: block;
 	}
 	h1 {
+		transition: 0.5s;
 		font-size: ${isLarge ? "2.5em" : "2em"};
 		min-height: ${isLarge ? "100%" : "10%"};
-		transition: 0.5s;
 		font-family: Sharp;
 	}
 `;

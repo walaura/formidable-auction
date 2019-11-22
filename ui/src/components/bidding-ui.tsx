@@ -18,9 +18,6 @@ const layoutStyles = css`
 	& > :first-child {
 		padding: ${tokens.padding};
 	}
-	& > :last-child {
-		background: white;
-	}
 	& > * {
 		position: relative;
 	}
