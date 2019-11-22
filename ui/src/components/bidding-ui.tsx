@@ -1,10 +1,11 @@
 import css from "@emotion/css";
-import React, { useState, useEffect } from "react";
-import currencies from "../moneys";
+import React from "react";
+import { getPrices, useFtcRate } from "../helpers/money";
 import tokens from "../tokens";
 import Image from "./bidding/image";
 import Plaque from "./bidding/plaque";
 import Prices, { Price } from "./bidding/price";
+import { Lot } from "../helpers/lots";
 
 const layoutStyles = css`
 	display: grid;
@@ -31,6 +32,16 @@ const mysteryStyles = css`
 	color: #fff;
 	height: 100vh;
 	width: 100vw;
+
+	> img {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		height: 60vh;
+	}
 `;
 
 const leftyLayoutStyles = ({ hasPrices }) => css`
@@ -43,35 +54,6 @@ const leftyLayoutStyles = ({ hasPrices }) => css`
 		`}
 `;
 
-const getPrices = (basePrice, ftcRate) =>
-	Object.entries(currencies).map(([key, { rate }]) => {
-		const dollarPrice = basePrice * ftcRate;
-		return {
-			currency: key,
-			value: key === "FTC" ? basePrice : dollarPrice * rate
-		};
-	});
-
-const useFtcRate = () => {
-	const [rate, setRate] = useState(Math.random());
-	useEffect(() => {
-		const itvl = setInterval(() => {
-			const diff = (0.5 - Math.random()) / 10;
-			setRate(r => (r > 0.5 ? r + diff : r + Math.abs(diff)));
-		}, 100);
-		return () => {
-			clearTimeout(itvl);
-		};
-	});
-	return rate;
-};
-
-interface Lot {
-	title: string;
-	id: number;
-	images: string[];
-}
-
 const MysteryLot = () => (
 	<main css={mysteryStyles}>
 		<div>
@@ -79,18 +61,19 @@ const MysteryLot = () => (
 				isTransparent
 				isLarge={false}
 				item="?¿?¿"
-				standfirst={"Next lot"}
+				standfirst={"Coming up next"}
 			/>
 		</div>
+		<img src={require("../images/cube.png")} alt="" />
 	</main>
 );
 
 const BiddingUI = ({
 	price = undefined,
-	lot = undefined
+	lot
 }: {
 	price: number;
-	lot: Lot | undefined;
+	lot?: Lot;
 }) => {
 	const ftcRate = useFtcRate();
 	const prices = getPrices(price || 0, ftcRate);
@@ -104,8 +87,8 @@ const BiddingUI = ({
 			<div css={leftyLayoutStyles({ hasPrices: !!price })}>
 				<Plaque
 					isLarge={!price}
-					item="Very long title to see how this overflows"
-					standfirst={`Lot #${12}`}
+					item={lot.title}
+					standfirst={`Lot #${lot.id}`}
 				/>
 				<div
 					css={css`
@@ -122,7 +105,9 @@ const BiddingUI = ({
 				</div>
 			</div>
 			<div>
-				<Image src="https://66.media.tumblr.com/60aeee62dc1aee0c3c0fbad1702eb860/tumblr_inline_pfp352ORsk1r4hkfd_250.png"></Image>
+				{lot.images.map(img => (
+					<Image src={img}></Image>
+				))}
 			</div>
 		</main>
 	);

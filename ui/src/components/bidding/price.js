@@ -1,6 +1,6 @@
 import { css, keyframes } from "@emotion/core";
 import React from "react";
-import currencies from "../../moneys";
+import { currencies } from "./../../helpers/money";
 
 const styles = css`
 	small {
