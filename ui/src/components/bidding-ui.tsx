@@ -25,6 +25,14 @@ const layoutStyles = css`
 	}
 `;
 
+const mysteryStyles = css`
+	padding: ${tokens.padding};
+	background: ${tokens.dark};
+	color: #fff;
+	height: 100vh;
+	width: 100vw;
+`;
+
 const leftyLayoutStyles = ({ hasPrices }) => css`
 	display: grid;
 	grid-template-rows: max-content max-content;
@@ -58,13 +66,47 @@ const useFtcRate = () => {
 	return rate;
 };
 
-const BiddingUI = ({ price = undefined, lot = undefined }) => {
+interface Lot {
+	title: string;
+	id: number;
+	images: string[];
+}
+
+const MysteryLot = () => (
+	<main css={mysteryStyles}>
+		<div>
+			<Plaque
+				isTransparent
+				isLarge={false}
+				item="?¿?¿"
+				standfirst={"Next lot"}
+			/>
+		</div>
+	</main>
+);
+
+const BiddingUI = ({
+	price = undefined,
+	lot = undefined
+}: {
+	price: number;
+	lot: Lot | undefined;
+}) => {
 	const ftcRate = useFtcRate();
 	const prices = getPrices(price || 0, ftcRate);
+
+	if (!lot) {
+		return <MysteryLot />;
+	}
+
 	return (
 		<main css={layoutStyles}>
 			<div css={leftyLayoutStyles({ hasPrices: !!price })}>
-				<Plaque isLarge={!price} item="Very long title to see how this overflows" lot={12} />
+				<Plaque
+					isLarge={!price}
+					item="Very long title to see how this overflows"
+					standfirst={`Lot #${12}`}
+				/>
 				<div
 					css={css`
 						padding: ${tokens.padding};
