@@ -7,7 +7,8 @@ const styles = css`
 	color: #fff;
 	padding: ${tokens.padding};
 	h1 {
-		font-size: 4em;
+		font-size: 2em;
+		font-family: Sharp;
 	}
 `;
 const Plaque = ({ item, lot }) => (
