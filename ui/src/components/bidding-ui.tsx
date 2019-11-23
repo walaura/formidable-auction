@@ -1,11 +1,13 @@
 import css from "@emotion/css";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import { lots } from "../helpers/lots";
 import { getPrices, useFtcRate } from "../helpers/money";
+import { PageState } from "../helpers/state";
 import tokens from "../tokens";
 import Image from "./bidding/image";
 import Plaque from "./bidding/plaque";
 import Prices, { Price } from "./bidding/price";
-import { Lot } from "../helpers/lots";
 
 const layoutStyles = css`
 	display: grid;
@@ -51,13 +53,13 @@ const leftyLayoutStyles = ({ hasPrices }) => css`
 		`}
 `;
 
-const MysteryLot = () => (
+const MysteryLot = ({ lot }: { lot?: number }) => (
 	<main css={mysteryStyles}>
 		<div>
 			<Plaque
 				isTransparent
 				isLarge={false}
-				item="?¿?¿"
+				item={lot ? `Lot #${lot}` : `?¿?¿`}
 				standfirst={"Coming up next"}
 			/>
 		</div>
@@ -65,18 +67,30 @@ const MysteryLot = () => (
 	</main>
 );
 
-const BiddingUI = ({
-	price = undefined,
-	lot
-}: {
-	price: number;
-	lot?: Lot;
-}) => {
-	const ftcRate = useFtcRate();
-	const prices = getPrices(price || 0, ftcRate);
+const useImage = (images: string[]) => {
+	const [active, setActive] = useState(0);
+	useEffect(() => {
+		const itvl = setInterval(() => {
+			setActive(current => {
+				if (images[current + 1]) return current + 1;
+				return 0;
+			});
+		}, 3000);
+		return () => {
+			clearTimeout(itvl);
+		};
+	}, images.join());
+	return images[active];
+};
 
-	if (!lot) {
-		return <MysteryLot />;
+const BiddingUI = ({ price = 0, lot, teaser }: PageState) => {
+	const ftcRate = useFtcRate();
+	const prices = getPrices(price, ftcRate);
+	const lotInfo = lots[lot] || undefined;
+	const image = useImage(lotInfo.images || []);
+
+	if (!lotInfo || teaser) {
+		return <MysteryLot lot={teaser && lotInfo && lotInfo.id} />;
 	}
 
 	return (
@@ -84,12 +98,13 @@ const BiddingUI = ({
 			<div css={leftyLayoutStyles({ hasPrices: !!price })}>
 				<Plaque
 					isLarge={!price}
-					item={lot.title}
-					standfirst={`Lot #${lot.id}`}
+					item={lotInfo.title}
+					standfirst={`Lot #${lotInfo.id}`}
 				/>
 				<div
 					css={css`
 						padding: ${tokens.padding};
+						padding-bottom: 0;
 					`}
 				>
 					{price && (
@@ -102,9 +117,7 @@ const BiddingUI = ({
 				</div>
 			</div>
 			<div>
-				{lot.images.map(img => (
-					<Image src={img}></Image>
-				))}
+				<Image src={image} />
 			</div>
 		</main>
 	);
