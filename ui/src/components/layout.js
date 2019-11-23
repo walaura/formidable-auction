@@ -12,11 +12,11 @@ const logoStyles = css`
 	height: 6vmax;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, logo = true }) => {
 	return (
 		<>
 			{children}
-			<img src={logo} alt="logo" css={logoStyles} />
+			{logo && <img src={logo} alt="logo" css={logoStyles} />}
 		</>
 	);
 };
