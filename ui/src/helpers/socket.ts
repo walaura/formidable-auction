@@ -11,7 +11,7 @@ export const useSocketReducer = <S, A extends GenericAction>(
 	const socket = useRef<WebSocket>();
 	useEffect(() => {
 		socket.current = new WebSocket(
-			`wss://connect.websocket.in/v2/${"1"}?token=${process.env.TOKEN}`
+			`wss://connect.websocket.in/v2/${"1"}?token=${process.env.GATSBY_TOKEN}`
 		);
 		socket.current.onmessage = event => {
 			try {
