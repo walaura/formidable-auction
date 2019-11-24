@@ -12,7 +12,9 @@ const styles = css`
 `;
 const Price = ({ currency = "USD", value = 10.01 }) => {
 	const { name, symbol } = currencies[currency] || currencies["USD"];
-	const renderValue = value.toFixed(2);
+	const renderValue = value.toLocaleString(undefined, {
+		maximumFractionDigits: 2
+	});
 	return (
 		<div css={styles}>
 			<span>

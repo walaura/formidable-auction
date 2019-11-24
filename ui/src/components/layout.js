@@ -1,6 +1,6 @@
 import { css } from "@emotion/core";
 import React from "react";
-import logo from "../images/formilogo.svg";
+import flogo from "../images/formilogo.svg";
 import tokens from "../tokens";
 
 import "./layout.css";
@@ -16,7 +16,7 @@ const Layout = ({ children, logo = true }) => {
 	return (
 		<>
 			{children}
-			{logo && <img src={logo} alt="logo" css={logoStyles} />}
+			{logo && <img src={flogo} alt="logo" css={logoStyles} />}
 		</>
 	);
 };
