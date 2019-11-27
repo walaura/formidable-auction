@@ -8,16 +8,55 @@ const addLotIds = (value, id) => ({ ...value, id: id + 1 });
 
 export const lots: Lot[] = [
 	{
-		title: "Pulitzer prize (2 units)",
+		title: "Mug w/ 46 sharpies (dry)",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "Printed out trello board with cards crossed out",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "Defaced sticker",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "Home security device (left half)",
+		images: [require("../images/security.jpg")]
+	},
+	{
+		title: "Pixel 3 headphones",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "USB drive from the guardian investigations desk",
+		images: [require("../images/usb.jpg")]
+	},
+	{
+		title: "Puliter prize (2)",
+		images: [require("../images/pul.jpg")]
+	},
+	{
+		title: "Nandos Card (anonymous)",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "he-man figurine painted to kinda look like Jani Evakalio",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "Bike seat (no bike)",
+		images: [require("../images/gatsby-astronaut.png")]
+	},
+	{
+		title: "Toilet doorknob touched by Dan Abromov",
 		images: [
-			"https://i.pinimg.com/originals/50/85/99/5085994ede8255506b1f0051528da2eb.jpg",
-			"https://66.media.tumblr.com/60aeee62dc1aee0c3c0fbad1702eb860/tumblr_inline_pfp352ORsk1r4hkfd_250.png"
+			require("../images/bth.jpg"),
+			require("../images/bth-dan.jpg"),
+			require("../images/bth-me.jpg")
 		]
 	},
 	{
-		title: "Other test",
-		images: [
-			"https://66.media.tumblr.com/60aeee62dc1aee0c3c0fbad1702eb860/tumblr_inline_pfp352ORsk1r4hkfd_250.png"
-		]
+		title: "Facebook avocados (1KG)",
+		images: [require("../images/gatsby-astronaut.png")]
 	}
 ].map(addLotIds);
