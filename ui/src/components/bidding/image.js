@@ -3,9 +3,11 @@ import React from "react";
 
 const slidein = keyframes`
 	from {
+		z-index: z-index: 11;
 		transform:translateY(100%)
 	}
-	top {
+	to {
+		z-index: 11;
 		transform:translateY(0)
 	}
 `;
@@ -20,9 +22,14 @@ const imageStyles = src => css`
 	background-size: cover;
 	background-image: url(${src});
 	transition: 1s;
+	z-index: 8;
+	&[data-active="false"] + &[data-active="true"] {
+		z-index: 9;
+		opacity: 0.5;
+	}
 	&[data-active="true"] {
 		animation: ${slidein} 0.5s;
-		z-index: 2;
+		z-index: 10;
 	}
 `;
 
