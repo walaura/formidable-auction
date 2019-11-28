@@ -135,11 +135,11 @@ table {
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap");
 @font-face {
 	font-family: "Sharp";
-	src: url("sharp-sans.woff2");
+	src: url("fluro.otf");
 }
 :root {
 	font-family: "Roboto mono", monospace;
-	font-size: 3vmin;
+	font-size: 2.5vmin;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

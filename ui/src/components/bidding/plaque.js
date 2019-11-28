@@ -1,10 +1,10 @@
 import { css } from "@emotion/core";
 import React from "react";
-import tokens from "../../tokens";
+import tokens from "../../helpers/tokens";
 
 const styles = ({ isLarge, isTransparent }) => css`
 	background: ${isTransparent ? tokens.dark : tokens.brand};
-	color: #fff;
+	color: ${isTransparent ? "white" : tokens.textOverBrand};
 	padding: ${tokens.padding};
 	border-radius: 2px;
 	transition: 0.5s;
@@ -14,9 +14,10 @@ const styles = ({ isLarge, isTransparent }) => css`
 	}
 	h1 {
 		transition: 0.5s;
-		font-size: ${isLarge ? "2.5em" : "2em"};
+		font-size: ${isLarge ? "3.5em" : "2.5em"};
 		min-height: ${isLarge ? "100%" : "10%"};
 		font-family: Sharp;
+		line-height: 0.9;
 	}
 `;
 const Plaque = ({ item, standfirst, isLarge, isTransparent = false }) => (

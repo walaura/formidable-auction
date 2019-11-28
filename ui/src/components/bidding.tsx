@@ -4,14 +4,14 @@ import { CSSTransition } from "react-transition-group";
 import { lots } from "../helpers/lots";
 import { getPrices, useFtcRate } from "../helpers/money";
 import { PageState } from "../helpers/state";
-import tokens from "../tokens";
+import tokens from "../helpers/tokens";
 import Image from "./bidding/image";
 import Plaque from "./bidding/plaque";
 import Prices, { Price } from "./bidding/price";
 
 const layoutStyles = css`
 	display: grid;
-	grid-template-columns: 1fr minmax(0, 100vh);
+	grid-template-columns: auto 100vh;
 	background: ${tokens.dark};
 	color: #fff;
 	height: 100vh;
@@ -20,6 +20,7 @@ const layoutStyles = css`
 
 	& > :first-child {
 		padding: ${tokens.padding};
+		overflow: hidden;
 	}
 	& > * {
 		position: relative;

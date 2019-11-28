@@ -1,7 +1,7 @@
 import css from "@emotion/css";
 import React from "react";
 import Layout from "../components/layout";
-import tokens from "../tokens";
+import tokens from "../helpers/tokens";
 import { usePageState } from "../helpers/state";
 import { lots } from "../helpers/lots";
 
@@ -25,7 +25,7 @@ const navLayout = css`
 		align-items: center;
 		justify-content: center;
 		background-color: ${tokens.brand};
-		color: white;
+		color: ${tokens.textOverBrand};
 		font-size: 1em;
 		font-weight: bold;
 		&:hover {
