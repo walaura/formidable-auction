@@ -1,7 +1,8 @@
-import { Dispatch } from "react";
+import { Dispatch, useEffect } from "react";
 import { lots } from "./lots";
 import { PageState } from "./state";
 import { useSocketReducer } from "./socket";
+import { listen } from "./gamepad";
 
 export interface PageState {
 	lot: number;
@@ -26,8 +27,20 @@ const initialState: PageState = {
 	synced: true
 };
 
-export const usePageState = (): [PageState, Dispatch<PageStateActions>] =>
-	useSocketReducer<PageState, PageStateActions>(
+export const usePageState = (): [PageState, Dispatch<PageStateActions>] => {
+	useEffect(() => {
+		listen(btn => {
+			console.log(btn);
+			if (btn === 0) {
+				dispatch({ type: "next_lot" });
+			} else if (btn === 3) {
+				dispatch({ type: "prev_lot" });
+			} else if (btn === 1) {
+				dispatch({ type: "toggle_teaser" });
+			}
+		});
+	}, []);
+	const [state, dispatch] = useSocketReducer<PageState, PageStateActions>(
 		(state, action) => {
 			switch (action.type) {
 				case "reset":
@@ -51,3 +64,5 @@ export const usePageState = (): [PageState, Dispatch<PageStateActions>] =>
 		},
 		{ ...initialState, synced: false }
 	);
+	return [state, dispatch];
+};
