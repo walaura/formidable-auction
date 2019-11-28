@@ -10,6 +10,7 @@ const logoStyles = css`
 	top: ${tokens.padding};
 	right: ${tokens.padding};
 	height: 6vmax;
+	z-index: 9000;
 `;
 
 const Layout = ({ children, logo = true }) => {

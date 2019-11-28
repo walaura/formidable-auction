@@ -16,11 +16,17 @@ const imageStyles = src => css`
 	left: 0;
 	right: 0;
 	bottom: 0;
-	animation: ${slidein} 0.5s;
 	background-position: center left;
 	background-size: cover;
 	background-image: url(${src});
+	transition: 1s;
+	&[data-active="true"] {
+		animation: ${slidein} 0.5s;
+		z-index: 2;
+	}
 `;
 
-const Image = ({ src }) => <div css={imageStyles(src)} />;
+const Image = ({ src, active = true, ...props }) => (
+	<div css={imageStyles(src)} data-active={active} {...props} />
+);
 export default Image;

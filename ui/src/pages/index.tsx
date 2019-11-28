@@ -1,5 +1,5 @@
 import React from "react";
-import BiddingUI from "../components/bidding-ui";
+import BiddingUI from "../components/bidding";
 import Layout from "../components/layout";
 import { usePageState } from "../helpers/state";
 

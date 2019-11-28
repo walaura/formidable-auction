@@ -16,6 +16,7 @@ const layoutStyles = css`
 	color: #fff;
 	height: 100vh;
 	width: 100vw;
+	overflow: hidden;
 
 	& > :first-child {
 		padding: ${tokens.padding};
@@ -67,27 +68,27 @@ const MysteryLot = ({ lot }: { lot?: number }) => (
 	</main>
 );
 
-const useImage = (images: string[]) => {
+const useImage = (length = 0) => {
 	const [active, setActive] = useState(0);
 	useEffect(() => {
 		const itvl = setInterval(() => {
 			setActive(current => {
-				if (images[current + 1]) return current + 1;
+				if (current + 1 < length) return current + 1;
 				return 0;
 			});
 		}, 3000);
 		return () => {
 			clearTimeout(itvl);
 		};
-	}, images.join());
-	return images[active];
+	}, [length]);
+	return active;
 };
 
 const BiddingUI = ({ price = 0, lot, teaser }: PageState) => {
 	const ftcRate = useFtcRate();
 	const prices = getPrices(price, ftcRate);
 	const lotInfo = lots[lot] || undefined;
-	const image = useImage(lotInfo.images || []);
+	const activeImage = useImage(lotInfo.images.length || 0);
 
 	if (!lotInfo || teaser) {
 		return <MysteryLot lot={teaser && lotInfo && lotInfo.id} />;
@@ -117,7 +118,9 @@ const BiddingUI = ({ price = 0, lot, teaser }: PageState) => {
 				</div>
 			</div>
 			<div>
-				<Image src={image} />
+				{lotInfo.images.map((image, id) => (
+					<Image src={image} active={activeImage === id} key={id} />
+				))}
 			</div>
 		</main>
 	);
