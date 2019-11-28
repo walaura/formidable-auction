@@ -16,8 +16,8 @@ export const lots: Lot[] = [
 		images: [require("../images/gatsby-astronaut.png")]
 	},
 	{
-		title: "Defaced sticker",
-		images: [require("../images/gatsby-astronaut.png")]
+		title: "Defaced declarative UI framework stickers (Set of 20)",
+		images: [require("../images/defaced.jpg")]
 	},
 	{
 		title: "Home security device (left half)",
@@ -36,8 +36,8 @@ export const lots: Lot[] = [
 		images: [require("../images/pul.jpg")]
 	},
 	{
-		title: "Nandos Card (anonymous)",
-		images: [require("../images/gatsby-astronaut.png")]
+		title: "Nandos card that appeared on top of my locker",
+		images: [require("../images/nandos.jpg")]
 	},
 	{
 		title: "he-man figurine painted to kinda look like Jani Evakalio",

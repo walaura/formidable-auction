@@ -139,7 +139,7 @@ table {
 }
 :root {
 	font-family: "Roboto mono", monospace;
-	font-size: 3.33vmin;
+	font-size: 3vmin;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
