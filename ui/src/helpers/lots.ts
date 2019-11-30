@@ -8,11 +8,11 @@ const addLotIds = (value, id) => ({ ...value, id: id + 1 });
 
 export const lots: Lot[] = [
 	{
-		title: "Mug w/ 46 sharpies (dry)",
+		title: "Pixel 3 headphones, iPhone 6s headphones, Galaxy S6 Headphones",
 		images: [require("../images/gatsby-astronaut.png")]
 	},
 	{
-		title: "Printed out trello board with cards crossed out",
+		title: "Playmobil train set that the ux department somehow convinced the business into purchasing",
 		images: [require("../images/gatsby-astronaut.png")]
 	},
 	{
@@ -20,12 +20,12 @@ export const lots: Lot[] = [
 		images: [require("../images/defaced.jpg")]
 	},
 	{
-		title: "Home security device (left half)",
-		images: [require("../images/security.jpg")]
+		title: "Printed out trello board with cards crossed out",
+		images: [require("../images/gatsby-astronaut.png")]
 	},
 	{
-		title: "Pixel 3 headphones",
-		images: [require("../images/gatsby-astronaut.png")]
+		title: "Perimeter security device (left half)",
+		images: [require("../images/security.jpg")]
 	},
 	{
 		title: "USB drive from the guardian investigations desk",
@@ -40,7 +40,7 @@ export const lots: Lot[] = [
 		images: [require("../images/nandos.jpg")]
 	},
 	{
-		title: "he-man figurine painted to kinda look like Jani Evakalio",
+		title: "Funko pop that looks vaguely like Jani Evakalio",
 		images: [require("../images/gatsby-astronaut.png")]
 	},
 	{
