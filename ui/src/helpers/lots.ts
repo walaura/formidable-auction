@@ -12,7 +12,7 @@ export const lots: Lot[] = [
     images: [require("../images/sharpes.jpg")]
   },
   {
-    title: "Pixel 3 headphones, iPhone 6s headphones, Galaxy S6 Headphones",
+    title: "Pixel 3 headphones, iPhone Xr headphones, Galaxy 10 Headphones",
     images: [require("../images/cables.jpg")]
   },
   {
@@ -56,7 +56,7 @@ export const lots: Lot[] = [
     images: [require("../images/bike-1.jpg"), require("../images/bike-2.jpg")]
   },
   {
-    title: "Toilet doorknob touched by Dan Abromov",
+    title: "Toilet doorknob touched by Dan Abramov",
     images: [
       require("../images/bth.jpg"),
       require("../images/bth-dan.jpg"),
