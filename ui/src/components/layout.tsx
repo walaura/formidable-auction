@@ -18,7 +18,7 @@ const Layout = ({ children }) => (
     <div css={preloadCss}>
       {lots
         .map(({ images }) => images)
-        .flat()
+        .reduce((prev, current) => [...prev, ...current], [])
         .map(src => (
           <img {...{ src }} />
         ))}
