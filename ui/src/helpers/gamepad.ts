@@ -1,4 +1,4 @@
-const listen = (callback: (button: number) => void) => {
+const listen = (callback: (button: unknown) => void) => {
 	let lastKnown = [];
 	const pollGamepads = () => {
 		// Grab a list of gamepads that are currently connected or a empty array
@@ -24,6 +24,9 @@ const listen = (callback: (button: number) => void) => {
 		}
 	};
 	setInterval(pollGamepads, 100);
+	window.addEventListener('keydown',ev=>{
+		callback(ev.code)
+	})
 };
 
 export { listen };

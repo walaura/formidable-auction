@@ -30,12 +30,11 @@ const initialState: PageState = {
 export const usePageState = (): [PageState, Dispatch<PageStateActions>] => {
 	useEffect(() => {
 		listen(btn => {
-			console.log(btn);
-			if (btn === 0) {
+			if (btn === 0 || btn === 'ArrowRight') {
 				dispatch({ type: "next_lot" });
-			} else if (btn === 3) {
+			} else if (btn === 3 || btn === 'ArrowLeft') {
 				dispatch({ type: "prev_lot" });
-			} else if (btn === 1) {
+			} else if (btn === 1 || btn === 'ArrowUp' || btn === 'ArrowDown') {
 				dispatch({ type: "toggle_teaser" });
 			}
 		});
