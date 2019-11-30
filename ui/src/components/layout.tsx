@@ -3,6 +3,7 @@ import React from "react";
 import "./layout.css";
 import css from "@emotion/css";
 import { lots } from "../helpers/lots";
+import { spinnerImages } from "./spinner";
 
 const preloadCss = css`
   img {
@@ -16,12 +17,14 @@ const preloadCss = css`
 const Layout = ({ children }) => (
   <>
     <div css={preloadCss}>
-      {lots
-        .map(({ images }) => images)
-        .reduce((prev, current) => [...prev, ...current], [])
-        .map(src => (
-          <img {...{ src }} />
-        ))}
+      {[
+        ...lots
+          .map(({ images }) => images)
+          .reduce((prev, current) => [...prev, ...current], []),
+        ...spinnerImages
+      ].map(src => (
+        <img {...{ src }} />
+      ))}
     </div>
     {children}
   </>
