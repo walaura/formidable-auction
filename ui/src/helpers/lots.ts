@@ -40,7 +40,7 @@ export const lots: Lot[] = [
     images: [require("../images/usb.jpg")]
   },
   {
-    title: "Puliter prize (2)",
+    title: "Pulitzer prize (2)",
     images: [require("../images/pul.jpg")]
   },
   {
