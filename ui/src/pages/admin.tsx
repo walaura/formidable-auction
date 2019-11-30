@@ -66,7 +66,7 @@ const SecondPage = () => {
 	const [state, dispatch] = usePageState();
 
 	return (
-		<Layout logo={false}>
+		<Layout>
 			<div css={navLayout}>
 				<div
 					css={css`
