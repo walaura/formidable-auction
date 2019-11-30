@@ -18,7 +18,7 @@ export const lots: Lot[] = [
   {
     title:
       "Lego train set that the ux department somehow convinced the business into purchasing",
-    images: [require("../images/lego.jpg")]
+    images: [require("../images/lego.jpg"), require("../images/lego-2.jpg")]
   },
   {
     title: "Defaced declarative UI framework stickers (Set of 20)",
