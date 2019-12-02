@@ -70,6 +70,29 @@ const MysteryLot = ({ lot }: { lot?: number }) => (
   </main>
 );
 
+const gifStyles = css`
+  padding: ${tokens.padding};
+  background: ${tokens.dark};
+  background-image: url(${require("../images/giphy.gif")});
+  background-size: cover;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+`;
+
+const GifLot = () => (
+  <main css={gifStyles}>
+    <Plaque
+      isTransparent
+      isLarge={true}
+      item={`Thank youuu`}
+      standfirst={"HOLY SHIT WE DID THIS!!!"}
+    />
+  </main>
+);
+
 const useImage = (length = 0) => {
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -92,6 +115,9 @@ const BiddingUI = ({ price = 0, lot, teaser }: PageState) => {
   const lotInfo = lots[lot] || undefined;
   const activeImage = useImage(lotInfo.images.length || 0);
 
+  if (lotInfo && lotInfo.title === "SECRET_ENDING") {
+    return <GifLot />;
+  }
   if (!lotInfo || teaser) {
     return <MysteryLot lot={teaser && lotInfo && lotInfo.id} />;
   }
