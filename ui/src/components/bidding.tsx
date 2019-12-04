@@ -70,10 +70,10 @@ const MysteryLot = ({ lot }: { lot?: number }) => (
   </main>
 );
 
-const gifStyles = css`
+const gifStyles = bg => css`
   padding: ${tokens.padding};
   background: ${tokens.dark};
-  background-image: url(${require("../images/giphy.gif")});
+  background-image: url(${bg});
   background-size: cover;
   color: #fff;
   height: 100vh;
@@ -82,14 +82,15 @@ const gifStyles = css`
   align-items: center;
 `;
 
-const GifLot = () => (
-  <main css={gifStyles}>
-    <Plaque
-      isTransparent
-      isLarge={true}
-      item={`Thank youuu`}
-      standfirst={"HOLY SHIT WE DID THIS!!!"}
-    />
+const GifLot = ({item, standfirst, bg}) => (
+  <main css={gifStyles(bg)}>
+    {item &&
+      <Plaque
+        isTransparent
+        isLarge={true}
+        {...{item, standfirst}}
+      />
+    }
   </main>
 );
 
@@ -116,7 +117,16 @@ const BiddingUI = ({ price = 0, lot, teaser }: PageState) => {
   const activeImage = useImage(lotInfo.images.length || 0);
 
   if (lotInfo && lotInfo.title === "SECRET_ENDING") {
-    return <GifLot />;
+    return <GifLot
+      bg={require("../images/giphy.gif")}
+      item={`Thank youuu`}
+      standfirst={"HOLY SHIT WE DID THIS!!!"}
+    />;
+  }
+  if (lotInfo && lotInfo.title === "SECRET_BYE") {
+    return <GifLot
+      bg={require("../images/ty-ty.jpg")}
+    />;
   }
   if (!lotInfo || teaser) {
     return <MysteryLot lot={teaser && lotInfo && lotInfo.id} />;

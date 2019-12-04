@@ -22,7 +22,8 @@ const Layout = ({ children }) => (
           .map(({ images }) => images)
           .reduce((prev, current) => [...prev, ...current], []),
         ...spinnerImages,
-        require("../images/giphy.gif")
+        require("../images/giphy.gif"),
+        require("../images/ty-ty.jpg")
       ].map(src => (
         <img {...{ src }} />
       ))}

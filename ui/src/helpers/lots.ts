@@ -80,5 +80,6 @@ export const lots: Lot[] = [
     ],
     startingPrice: 1000
   },
-  { title: "SECRET_ENDING", images: [], startingPrice: 0 }
+  { title: "SECRET_ENDING", images: [], startingPrice: 0 },
+  { title: "SECRET_BYE", images: [], startingPrice: 0 }
 ].map(addLotIds);
