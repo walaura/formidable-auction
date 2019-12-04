@@ -14,12 +14,6 @@ export const lots: Lot[] = [
     startingPrice: 5
   },
   {
-    title:
-      "Lego train set that the ux department somehow convinced the business into purchasing",
-    images: [require("../images/lego.jpg"), require("../images/lego-2.jpg")],
-    startingPrice: 20
-  },
-  {
     title: "Defaced declarative UI framework stickers (Set of 20)",
     images: [require("../images/defaced.jpg")],
     startingPrice: 1
@@ -28,11 +22,6 @@ export const lots: Lot[] = [
     title: "Printed out trello board with cards crossed out",
     images: [require("../images/trello.jpg")],
     startingPrice: 5
-  },
-  {
-    title: "Pixel 3 headphones, iPhone Xr headphones, Galaxy Headphones",
-    images: [require("../images/cables.jpg")],
-    startingPrice: 20
   },
   {
     title: "Random Samsung phone with the brexit app installed",
@@ -59,16 +48,6 @@ export const lots: Lot[] = [
   {
     title: "Pulitzer prize (2)",
     images: [require("../images/pul.jpg")],
-    startingPrice: 100
-  },
-  {
-    title: "Nandos card that appeared on top of my locker",
-    images: [require("../images/nandos.jpg")],
-    startingPrice: 5
-  },
-  {
-    title: "Bike seat (no bike)",
-    images: [require("../images/bike-1.jpg"), require("../images/bike-2.jpg")],
     startingPrice: 100
   },
   {
